@@ -50,22 +50,22 @@ router.put('/books/:id', (req, res) => {
     const {isbn, titulo, autor, fecha, id_user} = req.body;
     const { id } = req.params;
     mysqlConnection.query('UPDATE book SET isbn = ?, titulo = ?, autor = ?, fecha = ?, id_user = ? WHERE id = ?', [isbn, titulo, autor, fecha, id_user, id], (err, rows, fields) => {
-      if(!err) {
-        res.json({status: 'Book Updated'});
-      } else {
-        console.log(err);
-      }
+        if(!err) {
+            res.json({status: 'Book Updated'});
+        } else {
+            console.log(err);
+        }
     });
   });
 
 router.delete('/books/:id', (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('DELETE FROM book WHERE id = ?', [id], (err, rows, fields) => {
-      if(!err) {
-        res.json({status: 'Book Deleted'});
-      } else {
-        console.log(err);
-      }
+        if(!err) {
+            res.json({status: 'Book Deleted'});
+        } else {
+            console.log(err);
+        }
     });
   });
 
